@@ -1,0 +1,140 @@
+# Fallen God Testament Plugin Configuration
+
+testament:
+  # Total fragments required per god
+  total_fragments: 7
+  
+  fragments:
+    # RARE chest spawning configuration for epic rewards
+    chest_spawn_chance: 0.02          # 2% chance for fragments to spawn in opened chests
+    max_per_chest: 1                  # Always exactly 1 fragment per chest
+    min_distance: 2000                # Minimum distance between fragment spawn locations (blocks)
+    location_cooldown: 14400000       # Cooldown before same location can spawn fragments again (4 hours in ms)
+    player_chest_cooldown: 7200000    # Player cooldown for chest fragments (2 hours in ms)
+    
+    # RARE mob drop configuration for epic rewards
+    mob_drops_enabled: true           # Enable fragment drops from mobs
+    mob_drop_chance: 0.001           # 0.1% base chance for mobs to drop fragments
+    player_cooldown: 3600000         # Player cooldown for mob drops (1 hour in ms)
+    
+    # Environment multipliers for spawn chances (encourage dangerous exploration)
+    environment_multipliers:
+      overworld: 1.0                  # Normal spawn rate in overworld
+      nether: 2.0                     # 2x higher spawn rate in nether
+      the_end: 3.0                    # 3x higher spawn rate in the end
+    
+    # Rarity requirements
+    min_chests_for_fragments: 50      # Player must open at least 50 chests before fragments can spawn
+    exploration_bonus_threshold: 100  # Bonus chances start after 100 chests opened
+
+# Heart of the Fallen God Configuration
+heart_of_fallen_god:
+  enabled: true                       # Enable the Heart system
+  extra_hearts: 15                    # Extra hearts granted (15 = 30 health points)
+  strength_level: 1                   # Strength effect level (0 = Strength I)
+  regeneration_level: 2               # Regeneration effect level (1 = Regeneration II)
+  
+  # Veil of Nullification counter-system
+  nullification:
+    enabled: true                     # Enable nullification system
+    range: 16.0                       # Range in blocks for nullification effect
+    veil_effects:
+      slow_falling: true              # Grant Slow Falling to veil wielders
+      night_vision: true              # Grant Night Vision to veil wielders
+
+# Datapack Integration Settings
+datapack:
+  enabled: true                       # Enable datapack altar integration
+  auto_register: true                 # Automatically register discovered altars
+  scan_radius: 10                     # Default scan radius for /datapack scan command
+  announcement_range: 100             # Range for altar discovery announcements
+
+altar:
+  particles:
+    enabled: true
+    type: "SOUL_FIRE_FLAME"
+    count: 10
+  sounds:
+    enabled: true
+    activation: "BLOCK_BEACON_ACTIVATE"
+    completion: "UI_TOAST_CHALLENGE_COMPLETE"
+  
+  # Cooldown settings (in seconds) - longer for epic rewards
+  cooldowns:
+    fallen_god: 7200      # 2 hours
+    banishment_god: 8400  # 2.33 hours
+    abyssal_god: 9600     # 2.67 hours
+    sylvan_god: 10800     # 3 hours
+    tempest_god: 12000    # 3.33 hours
+    veil_god: 14400       # 4 hours
+
+# Epic reward details for all six gods
+rewards:
+  fallen_god:
+    name: "Testament of the Fallen God"
+    description: "Ultimate Protection Armor Set + Heart of the Fallen God"
+    theme: "Death, undeath, ultimate defense, divine life force"
+    special_items:
+      - "Heart of the Fallen God: Ultimate power item with 25 total hearts"
+  
+  banishment_god:
+    name: "Testament of the Banishment God"
+    description: "Ultimate Weapon & Tool Set"
+    theme: "Fire, exile, ultimate offense"
+  
+  abyssal_god:
+    name: "Testament of the Abyssal God"
+    description: "Master of the Depths Equipment"
+    theme: "Ocean depths, water mastery, underwater supremacy"
+  
+  sylvan_god:
+    name: "Testament of the Sylvan God"
+    description: "Nature's Guardian Equipment"
+    theme: "Nature, forests, growth, archery mastery"
+  
+  tempest_god:
+    name: "Testament of the Tempest God"
+    description: "Storm Lord's Arsenal"
+    theme: "Sky, storms, lightning, flight, speed"
+  
+  veil_god:
+    name: "Testament of the Veil God"
+    description: "Master of Dimensions Equipment + Veil of Nullification"
+    theme: "End dimension, teleportation, reality manipulation, nullification magic"
+    special_items:
+      - "Veil of Nullification: Counters Heart of Fallen God within 16 blocks"
+
+# Strategic Balance System
+balance:
+  power_vs_counter:
+    description: "Heart of Fallen God grants ultimate power but can be countered"
+    heart_power: "25 hearts + Strength I + Regeneration II"
+    veil_counter: "Nullifies heart effects within 16 blocks"
+    strategic_gameplay: "Creates risk/reward decisions and tactical positioning"
+  
+  rarity_justification: "Each testament requires finding 7 rare fragments with 0.1-2% drop rates"
+  time_investment: "Estimated 20-40 hours of dedicated gameplay per testament"
+  progression_curve: "Fragments 1-3 more common, fragments 6-7 extremely rare"
+  server_impact: "Permanent effects are balanced and don't break PvP"
+  uniqueness: "Each god offers completely different playstyle benefits"
+  pvp_balance: "Heart wielders are powerful but vulnerable to Veil wielders"
+
+# Performance and safety settings
+performance:
+  max_concurrent_spawns: 5            # Maximum concurrent fragment spawning operations
+  cleanup_interval: 300000            # Cleanup old tracking data every 5 minutes (ms)
+  max_tracking_entries: 10000         # Maximum entries in tracking maps before cleanup
+  async_operations: true              # Use async operations where possible
+
+# Debug settings
+debug:
+  enabled: false
+  log_fragment_spawns: true
+  log_mob_drops: true
+  log_chest_interactions: false
+  log_rarity_checks: false
+  log_reward_grants: true
+  log_heart_effects: false
+  log_nullification: false
+  log_datapack_integration: true      # Log datapack altar discoveries
+  log_altar_registration: true        # Log altar registrations

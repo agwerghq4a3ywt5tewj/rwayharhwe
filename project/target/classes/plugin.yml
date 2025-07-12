@@ -1,0 +1,101 @@
+name: FallenGodTestament
+version: 1.7.0
+main: com.fallengod.testament.FallenGodPlugin
+api-version: 1.21
+author: FallenGod Development Team
+description: Epic quest system where players collect testament fragments from fallen gods
+website: https://github.com/fallengod/testament
+
+commands:
+  testament:
+    description: Main testament command
+    usage: /testament <help|status|reunite>
+    permission: fallengod.use
+    aliases: [tg, fallengod]
+  
+  locatealtar:
+    description: Locate the nearest altar of a specific type
+    usage: /locatealtar <type>
+    permission: fallengod.admin.locate
+  
+  generatealtars:
+    description: Generate all altars in the world
+    usage: /generatealtars
+    permission: fallengod.admin.generate
+  
+  fragment:
+    description: Fragment management commands
+    usage: /fragment <spawn|drop|stats|clear|help>
+    permission: fallengod.admin.fragment
+    aliases: [frag, fragments]
+    
+  datapack:
+    description: Datapack altar management commands
+    usage: /datapack <scan|locate|reload|help>
+    permission: fallengod.admin.datapack
+    aliases: [dp, altars]
+
+permissions:
+  fallengod.*:
+    description: All Fallen God Testament permissions
+    children:
+      fallengod.use: true
+      fallengod.admin.*: true
+  
+  fallengod.use:
+    description: Basic plugin usage
+    default: true
+  
+  fallengod.admin.*:
+    description: All admin permissions
+    children:
+      fallengod.admin.locate: true
+      fallengod.admin.generate: true
+      fallengod.admin.fragment: true
+      fallengod.admin.spawn: true
+      fallengod.admin.drop: true
+      fallengod.admin.stats: true
+      fallengod.admin.clear: true
+      fallengod.admin.datapack: true
+      fallengod.admin.scan: true
+      fallengod.admin.reload: true
+  
+  fallengod.admin.locate:
+    description: Locate altars
+    default: op
+  
+  fallengod.admin.generate:
+    description: Generate altars
+    default: op
+  
+  fallengod.admin.fragment:
+    description: Fragment management commands
+    default: op
+  
+  fallengod.admin.spawn:
+    description: Spawn fragments in chests or inventory
+    default: op
+  
+  fallengod.admin.drop:
+    description: Simulate fragment drops from mobs
+    default: op
+  
+  fallengod.admin.stats:
+    description: View fragment spawning statistics
+    default: op
+  
+  fallengod.admin.clear:
+    description: Clear processed chest cache
+    default: op
+    
+  fallengod.admin.datapack:
+    description: Datapack altar management
+    default: op
+    
+  fallengod.admin.scan:
+    description: Scan for datapack altars
+    default: op
+    
+  fallengod.admin.reload:
+    description: Reload datapack registrations
+    default: op
